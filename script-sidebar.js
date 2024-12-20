@@ -24,15 +24,17 @@ function renderSteps() {
         return;
     }
 
-    stepsList.innerHTML = sidebarSteps.map(step => `
-        <div class="destovka-step ${step.id === currentStep ? 'destovka-step-active' : ''} 
-             ${step.id < currentStep ? 'destovka-step-completed' : ''}">
-            <div class="destovka-step-number">
-                ${step.id < currentStep ? '✓' : step.id}
+    stepsList.innerHTML = sidebarSteps.map(((step, index) => `
+            ${index !== 0 && index < currentStep ? '<div class="destovka-step-line"></div>' : ''}
+            <div class="destovka-step ${step.id === currentStep ? 'destovka-step-active' : ''} 
+                ${step.id < currentStep ? 'destovka-step-completed' : ''}">
+                <div class="destovka-step-number">
+                    ${step.id < currentStep ? '✓' : step.id}
+                </div>
+                <div class="destovka-step-title">${step.title}</div>
             </div>
-            <div class="destovka-step-title">${step.title}</div>
-        </div>
-    `).join('');
+        `)
+    ).join('');
 }
 
 // Funkce pro změnu kroku - bude volána z hlavní aplikace

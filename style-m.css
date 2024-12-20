@@ -1,32 +1,59 @@
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+    .sidebar {
+        position: sticky;
+        top: 0;
+    }
+
+    .destovka-wrapper-flex {
+      flex-direction: column;
+    }
+
+    .destovka-site-logo {
+      display: none;
+    }
+
+    .destovka-side-container {
+      width: 100%;
+      flex-direction: row;
+      background-color: #fff;
+    }
+
     .destovka-container {
       flex-direction: column;
     }
   
     .destovka-sidebar {
-      flex: 0 0 auto;
-      width: 100%;
-      padding: 12px;
-      border-right: none;
-      border-bottom: 1px solid #eee;
+        width: 100%;
+        padding: 0;
     }
-  
+
     .destovka-steps {
-      max-height: none;
-      overflow-y: visible;
+        flex-direction: row;
+        overflow: auto;
     }
-  
+
     .destovka-step {
-      padding: 10px;
+        max-width: 200px;
+        padding: 4px 8px;
+        border-radius: 0;
+    }
+
+    .destovka-step-completed {
+        border-bottom: 1px solid var(--destovka-success);
     }
   
     .destovka-step-title {
-      font-size: 12px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .destovka-step-line {
+        display: none;
     }
   }
 
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .destovka-error-banner {
         padding: 12px;
         font-size: 14px;
@@ -34,7 +61,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .destovka-error-banner {
       padding: 12px;
       font-size: 14px;
@@ -44,7 +71,7 @@
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .destovka-alert {
       padding: 16px;
       font-size: 14px;
@@ -66,7 +93,7 @@
 
 /* Přidat do style-m.css */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .destovka-konfig-calc-modal-content {
       width: 95%;
       max-height: 95vh;
