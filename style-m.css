@@ -1,0 +1,101 @@
+@media (max-width: 768px) {
+    .destovka-container {
+      flex-direction: column;
+    }
+  
+    .destovka-sidebar {
+      flex: 0 0 auto;
+      width: 100%;
+      padding: 12px;
+      border-right: none;
+      border-bottom: 1px solid #eee;
+    }
+  
+    .destovka-steps {
+      max-height: none;
+      overflow-y: visible;
+    }
+  
+    .destovka-step {
+      padding: 10px;
+    }
+  
+    .destovka-step-title {
+      font-size: 12px;
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .destovka-error-banner {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+  .destovka-error-banner {
+      padding: 12px;
+      font-size: 14px;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .destovka-alert {
+      padding: 16px;
+      font-size: 14px;
+  }
+
+  .destovka-alert-buttons {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .destovka-button-alert {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+  }
+}
+
+
+
+/* Přidat do style-m.css */
+
+@media (max-width: 768px) {
+  .destovka-konfig-calc-modal-content {
+      width: 95%;
+      max-height: 95vh;
+  }
+
+  .destovka-konfig-calc-form {
+      gap: 16px;
+  }
+
+  .destovka-konfig-calc-modal-footer {
+      flex-direction: column;
+  }
+
+  .destovka-konfig-calc-button {
+      width: 100%;
+  }
+
+  .destovka-konfig-calc-input {
+      font-size: 14px;
+  }
+
+  .destovka-konfig-calc-hint {
+      font-size: 12px;
+  }
+
+  .destovka-konfig-calc-modal-header h2 {
+      font-size: 20px;
+  }
+}
+
+
+

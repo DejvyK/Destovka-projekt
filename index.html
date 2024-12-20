@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-nadrz.css">
+    <link rel="stylesheet" href="style-m.css">
+</head>
+<body>
+    <div class="destovka-wrapper-flex">
+        <section class="sidebar">
+            <div class="destovka-side-container">
+                <div class="destovka-site-logo">
+                    <img src="https://destovka.eu/wp-content/themes/destovka-theme/img/header/logo.svg" alt="destovka-logo-konfigurator">
+                </div>
+                <div class="destovka-sidebar">
+                    <div id="stepsList" class="destovka-steps"></div>
+                </div>
+            </div>
+        </section>
+        <main class="destovka-main-content">    
+        <section id="destovka-step1" class="destovka-step-content destovka-active">
+            <div class="destovka-main-container">
+                <section>
+                    <div class="destovka-main-text" >
+                        <h1>Konfigurátor vaší nádrže na dešťovou vodu</h1>
+                        <button class="destovka-autofill-button">Vyplnit ukázková data</button>
+                        <img src="obrazek.png" alt="tady" style="height: 300px; width: auto; margin: 0 auto;">
+                        <script>
+                            document.querySelector('.destovka-autofill-button').addEventListener('click', () => {
+                            const sampleData = {
+                                volumeRange: 3500,      // Změněno z 3000 na 3500 aby se zobrazily nádrže kolem této hodnoty
+                                concrete: 'no',  
+                                soil: 'clay',
+                                hsvDepth: 100,
+                                load: 'pochozí',     // Ponecháno pochozí - zobrazí se i nádrže s vyšší nosností
+                                inflowDiameter: '100/110',      
+                                outflowDiameter: '100/110',     
+                                inflowDepth: 420
+                            };
+                        
+                            Object.entries(sampleData).forEach(([id, value]) => {
+                                const element = document.getElementById(id);
+                                if (element) {
+                                    element.value = value;
+                                    if (id === 'volumeRange' && window.volumeRange) {
+                                        window.volumeRange.updateValue(value);
+                                    }
+                                }
+                            });
+                        });
+                            </script>
+                    </div>
+                    <div class="destovka-form">
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">1. Objem nádrže (v litrech)</label>
+                                <div class="destovka-input-row">
+                                    <div class="destovka-range-wrapper">
+                                        <input type="range" class="destovka-range" id="volumeRange" 
+                                            min="700" max="64000" step="100" value="3000">
+                                        <span class="destovka-range-value" id="volumeValue">3 000</span>
+                                    </div>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Objem nádrže" class="destovka-tooltip-img">
+                                            <p>Zadejte požadovaný objem nádrže v litrech. Pro běžnou zahradu doporučujeme minimálně 3000 litrů.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">2. Betonáž</label>
+                                <div class="destovka-input-row">
+                                    <select class="destovka-select" id="concrete">
+                                        <option value="">Vyberte možnost</option>
+                                        <option value="no">Nechci betonovat</option>
+                                        <option value="yes">Nevadí mi betonovat</option>
+                                    </select>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Betonáž" class="destovka-tooltip-img">
+                                            <p>Zvolte, zda chcete nebo nechcete nádrž obetonovat. Betonáž je nutná při výskytu spodní vody nebo při pojezdu vozidel.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">3. Typ půdy</label>
+                                <div class="destovka-input-row">
+                                    <select class="destovka-select" id="soil">
+                                        <option value="">Vyberte typ půdy</option>
+                                        <option value="gravel">Štěrk</option>
+                                        <option value="sand">Písek</option>
+                                        <option value="soil">Hlína</option>
+                                        <option value="clay">Jíl</option>
+                                    </select>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Typ půdy" class="destovka-tooltip-img">
+                                            <p>Typ půdy ovlivňuje způsob instalace a potřebu betonáže. Jílovitá půda zpravidla vyžaduje betonáž.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">4. Hloubka HSV</label>
+                                <div class="destovka-input-row">
+                                    <input type="number" class="destovka-input" id="hsvDepth" min="0" onkeydown="return event.keyCode !== 69 && event.keyCode !== 187" oninput="this.value = this.value.replace(/[eE\+\-]/g, '')">
+                                    <button class="destovka-unit-button" data-current-unit="cm">cm</button>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Hloubka HSV" class="destovka-tooltip-img">
+                                            <p>Hloubka hladiny spodní vody. Při vysoké hladině spodní vody je nutná betonáž nádrže.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">5. Zatížení</label>
+                                <div class="destovka-input-row">
+                                    <select class="destovka-select" id="load">
+                                        <option value="">Vyberte zatížení</option>
+                                        <option value="pochozí">pochozí</option>
+                                        <option value="pojezdná do 3,5 t">pojezdná do 3,5 t</option>
+                                        <option value="pojezdná do 12 t">pojezdná do 12 t</option>
+                                    </select>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Zatížení" class="destovka-tooltip-img">
+                                            <p>Zvolte předpokládané zatížení nádrže. Pro pojezd vozidel je nutná speciální úprava a betonáž.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">6. Průměr nátoku</label>
+                                <div class="destovka-input-row">
+                                    <select class="destovka-select" id="inflowDiameter">
+                                        <option value="">Vyberte průměr</option>
+                                        <option value="100/110">DN100/110</option>
+                                        <option value="125">DN125</option>
+                                        <option value="150/160">DN150/160</option>
+                                    </select>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Průměr nátoku" class="destovka-tooltip-img">
+                                            <p>Průměr přívodního potrubí. Musí odpovídat rozměrům vašich okapových svodů.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">7. Průměr výtoku</label>
+                                <div class="destovka-input-row">
+                                    <select class="destovka-select" id="outflowDiameter">
+                                        <option value="">Vyberte průměr</option>
+                                        <option value="100/110">DN100/110</option>
+                                        <option value="125">DN125</option>
+                                        <option value="150/160">DN150/160</option>
+                                    </select>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Průměr výtoku" class="destovka-tooltip-img">
+                                            <p>Průměr odtokového potrubí. Musí být dostatečný pro bezpečný odtok přebytečné vody.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="destovka-form-group">
+                            <div class="destovka-input-wrapper">
+                                <label class="destovka-label">8. Hloubka nátoku</label>
+                                <div class="destovka-input-row">
+                                    <input type="number" class="destovka-input" id="inflowDepth" min="0">
+                                    <button class="destovka-unit-button" data-current-unit="cm">cm</button>
+                                    <div class="destovka-tooltip">?
+                                        <div class="destovka-tooltip-content">
+                                            <img src="/api/placeholder/280/160" alt="Hloubka nátoku" class="destovka-tooltip-img">
+                                            <p>Hloubka přítokového potrubí. Ovlivňuje nutnou hloubku výkopu pro nádrž.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="destovka-button-group">
+                        <button class="destovka-button destovka-button-back">
+                            Předchozí krok
+                        </button>
+                        <button class="destovka-button destovka-button-next">
+                            Pokračovat  
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section id="destovka-step2" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <div class="destovka-main-text">
+                <h1>Výběr nádrže</h1>
+            </div>
+            
+            <div id="destovkaTanksContainer" class="destovka-tanks-container">
+                <!-- Sem se automaticky vloží 3 nádrže z JSONu -->
+            </div>
+    
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step3" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step4" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step5" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step6" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step7" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step8" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step9" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step10" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+        <section id="destovka-step11" class="destovka-step-content">
+            <div class="destovka-main-container">
+        <div class="destovka-main-text">
+            <h1>Výběr produktů</h1>
+        </div>
+        
+        <div class="destovka-button-group">
+            <button class="destovka-button destovka-button-back">
+                Předchozí krok
+            </button>
+            <button class="destovka-button destovka-button-next">
+                Pokračovat  
+            </button>
+        </div>
+    </div>
+        </section>
+
+    </main>
+
+
+
+
+
+
+    </div>
+
+    <script src="script-sidebar.js"></script>
+    <script src="script-main-container.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

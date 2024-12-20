@@ -1,0 +1,32 @@
+[
+    {
+        "Kód": "01.013.001.B",
+        "Typ": "Spodní výtok",
+        "Barva": "černá"
+    },
+    {
+        "Kód": "01.013.001.R",
+        "Typ": "Spodní výtok",
+        "Barva": "hnědá"
+    },
+    {
+        "Kód": "01.013.001.G",
+        "Typ": "Spodní výtok",
+        "Barva": "šedá"
+    },
+    {
+        "Kód": "01.013.002.B",
+        "Typ": "Boční výtok",
+        "Barva": "černá"
+    },
+    {
+        "Kód": "01.013.002.R",
+        "Typ": "Boční výtok",
+        "Barva": "hnědá"
+    },
+    {
+        "Kód": "01.013.002.G",
+        "Typ": "Boční výtok",
+        "Barva": "šedá"
+    }
+]

@@ -1,0 +1,137 @@
+[
+    {
+        "Kód": "95.0050.0070",
+        "Název": "Plastový poklop uzamykatelný",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "155",
+        "Maximální výška (mm)": "155",
+        "Systém": "Nautilus Gera",
+        "": ""
+    },
+    {
+        "Kód": "01.0600.0002",
+        "Název": "Pochozí plastový poklop k nádržím a šachtám",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "SVAR",
+        "": ""
+    },
+    {
+        "Kód": "95.0050.0074",
+        "Název": "Teleskopický nástavec 235 - 375 mm s poklopem",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "235",
+        "Maximální výška (mm)": "375",
+        "Systém": "Nautilus Gera",
+        "": ""
+    },
+    {
+        "Kód": "01.0600.0005",
+        "Název": "Nepochozí plastový poklop k nádržím a šachtám",
+        "Zatížení": "nepochozí",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "SVAR",
+        "": ""
+    },
+    {
+        "Kód": "10.4023.41",
+        "Název": "Poklop Stabil do 200 kg",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "GRAVIS",
+        "": ""
+    },
+    {
+        "Kód": "95.0050.0072",
+        "Název": "Teleskopický nástavec 500-750 mm s poklopem do 1500 kg ",
+        "Zatížení": "pojezdná do 3,5 t",
+        "Minimální výška (mm)": "500",
+        "Maximální výška (mm)": "750",
+        "Systém": "Nautilus Gera",
+        "": ""
+    },
+    {
+        "Kód": "95.0050.0073",
+        "Název": "Teleskopický nástavec 500-750 mm s poklopem do 3500 kg ",
+        "Zatížení": "pojezdná do 12 t",
+        "Minimální výška (mm)": "500",
+        "Maximální výška (mm)": "750",
+        "Systém": "Nautilus Gera",
+        "": ""
+    },
+    {
+        "Kód": " 22432/CER ",
+        "Název": "Pochozí plastový poklop k nádrži SWING",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "SWING",
+        "": ""
+    },
+    {
+        "Kód": "35.0000.0029",
+        "Název": "Plastový poklop  nepochozí",
+        "Zatížení": "nepochozí",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "Nautilus Gera",
+        "": ""
+    },
+    {
+        "Kód": "G1074001",
+        "Název": "Teleskopický nástavec 380-580 mm s poklopem  ",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "380",
+        "Maximální výška (mm)": "580",
+        "Systém": "AQUA",
+        "": ""
+    },
+    {
+        "Kód": "1135005438",
+        "Název": "Pojezdný poklop do 600 kg ",
+        "Zatížení": "pojezdná do 3,5 t",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "TWIN",
+        "": ""
+    },
+    {
+        "Kód": "202059",
+        "Název": "Pojízdný poklop litinový 3,5t ",
+        "Zatížení": "pojezdná do 3,5 t",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "LILO",
+        "": "COLUMBUS"
+    },
+    {
+        "Kód": "371010",
+        "Název": "Teleskopický poklop pochozí",
+        "Zatížení": "pochozí",
+        "Minimální výška (mm)": "360",
+        "Maximální výška (mm)": "360",
+        "Systém": "LILO XL",
+        "": "COLUMBUS XL"
+    },
+    {
+        "Kód": "7100520601",
+        "Název": "Litinový poklop do 12,5 tun",
+        "Zatížení": "pojezdná do 12 t",
+        "Minimální výška (mm)": "0",
+        "Maximální výška (mm)": "0",
+        "Systém": "ROTERRA",
+        "": ""
+    },
+    {
+        "Kód": "003636",
+        "Název": "Teleskopický nástavec 450-695 mm s poklopem do 3,5 t",
+        "Zatížení": "pojezdná do 3,5 t",
+        "Minimální výška (mm)": "450",
+        "Maximální výška (mm)": "695",
+        "Systém": "AQUA",
+        "": ""
+    }
+]

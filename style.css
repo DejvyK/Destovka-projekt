@@ -1,0 +1,621 @@
+:root {
+    --destovka-primary: #386df2;
+    --destovka-success: #37cc5f;
+    --destovka-inactive: #1b1b71;
+    --destovka-bg-light: #f8fafc;
+    --destovka-border-color: #e2e8f0;
+    --destovka-text-color: rgb(44, 42, 77);
+    --destovka-spacing-sm: 8px;
+    --destovka-spacing-md: 16px;
+    --destovka-spacing-lg: 32px;
+}
+  
+  .destovka-wrapper-flex {
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+  }
+
+  .destovka-side-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 25vw;
+    width: 350px;
+    box-shadow: 0.3125rem 0 1.25rem rgba(176, 185, 193, 0.65);
+  }
+
+  .destovka-site-logo {
+    width: auto !important;
+  }
+  
+  .destovka-sidebar {
+    flex: 0 0 280px;
+    background-color: var(--destovka-bg-light);
+    padding: 20px 0 20px 40px;
+    border-right: 1px solid #eee;
+  }
+  
+  .destovka-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    margin-top: 70px;
+  }
+  
+  .destovka-step {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    height: 50px;
+    padding: 16px;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+  }
+  
+  .destovka-step-active {
+    display: flex;
+    background-color: #e6f3ff;
+    border-left: 3px solid var(--destovka-primary);
+  }
+  .destovka-step-completed {
+    display: flex;
+  }
+  
+  .destovka-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: var(--destovka-inactive);
+  }
+  
+  .destovka-step-completed .destovka-step-number {
+    background-color: var(--destovka-success);
+    color: white;
+  }
+  
+  .destovka-step-active .destovka-step-number {
+    background-color: var(--destovka-primary);
+    color: white;
+  }
+  
+  .destovka-step-title {
+    flex: 1;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--destovka-text-color);
+  }
+  
+  .destovka-step-completed .destovka-step-title {
+    color: var(--destovka-success);
+  }
+
+
+  /* ZDE ZAČÍNÁ LKJSDFLKJSDFLKJSDLFKJSDLFKJSLDKFJSLKDJFSLAKJDFLKAJDSFLŮKJASDFŮLKJASDFŮLKJASDFŮLKJASDLFŮKJLŮAKJSDFLKJ */
+
+  .destovka-step-content {
+    display: none;
+    width: 100%;
+}
+
+.destovka-step-content.destovka-active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Common flex patterns */
+.destovka-flex {
+    display: flex;
+}
+
+.destovka-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.destovka-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.destovka-main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+}
+
+
+  .destovka-main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    flex: 1;
+    gap: 20px;  
+}
+
+.destovka-form {
+    display: flex;
+    flex-direction: row;  
+    flex-wrap: wrap;      
+    gap: 20px;  
+    max-width: 1200px;    
+    width: 100%;
+}
+
+.destovka-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;  
+    flex: 1 1 calc(50% - 10px);  
+    min-width: 280px;  
+}
+
+.destovka-label {
+    font-size: 17px;
+    color: var(--destovka-inactive);  
+    font-weight: 500;
+}
+
+.destovka-button-group {
+    display: flex;
+    gap: 16px; 
+    margin-top: 32px; 
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.destovka-button {
+    display: flex;
+    padding: 12px 24px; 
+    border-radius: 6px; 
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.destovka-button-next {
+    background-color: var(--destovka-success);
+    color: white;
+    border: none;
+}
+
+
+.destovka-button-back {
+    background-color: white;
+    color: var(--destovka-inactive);
+    border: 1px solid var(--destovka-border-color);
+}
+
+.destovka-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.destovka-main-text {
+    width: 100%;
+}
+
+.destovka-main-text h1 {
+    margin-bottom: 32px; 
+    color: var(--destovka-text-color);
+    font-size: 32px;  
+    line-height: 32px;
+    font-weight: 600;
+}
+
+.destovka-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.destovka-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.destovka-tooltip-wrapper {
+    position: relative;
+    display: flex;
+}
+
+.destovka-tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    max-width: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--destovka-primary);
+    border-radius: 50%;
+    color: white;
+    font-size: 17px;
+    cursor: help;
+}
+
+.destovka-tooltip-content {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    gap: 8px;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    max-width: 300px;
+    width: 280px;
+    z-index: 1000;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.destovka-tooltip:hover .destovka-tooltip-content {
+    display: flex;
+}
+
+.destovka-tooltip-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Přidat na konec style.css */
+.destovka-unit-switcher {
+    display: flex;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0 8px;
+    min-width: 140px;
+}
+
+.destovka-unit {
+    display: flex;
+    padding: 8px 12px;
+    cursor: pointer;
+    background: white;
+    color: var(--destovka-inactive);
+    border-right: 1px solid var(--destovka-border-color);
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+}
+
+.destovka-unit:last-child {
+    border-right: none;
+}
+
+.destovka-unit-active {
+    background: var(--destovka-primary);
+    color: white;
+}
+
+/* Přidat do style.css */
+/* Upravit v style.css */
+.destovka-unit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: 48px;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 6px;
+    background: white;
+    color: var(--destovka-primary);
+    cursor: pointer;
+    font-weight: 500;
+    min-width: 48px;
+    width: 48px; /* Přidáno - fixní šířka */
+    text-align: center; /* Přidáno */
+}
+
+
+.destovka-unit-button:hover {
+    background: #f8fafc;
+}
+
+
+.destovka-range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.destovka-range {
+    flex: 1;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--destovka-border-color);
+    border-radius: 2px;
+    outline: none;
+}
+
+.destovka-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--destovka-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.destovka-range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.destovka-range::-webkit-slider-thumb:active {
+    transform: scale(0.9);
+}
+
+.destovka-range::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: var(--destovka-primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.destovka-range::-moz-range-thumb:hover {
+    transform: scale(1.1);
+}
+
+.destovka-range::-moz-range-thumb:active {
+    transform: scale(0.9);
+}
+
+.destovka-range-value {
+    min-width: 80px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 6px;
+    text-align: center;
+    color: var(--destovka-primary);
+    font-weight: 500;
+}
+
+.destovka-error-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background-color: #fee2e2;
+    border-bottom: 1px solid #dc2626;
+    color: #dc2626;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: destovkaSlideDown 0.3s ease-out;
+}
+
+@keyframes destovkaSlideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes destovkaFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.destovka-error-banner.destovka-fade-out {
+    animation: destovkaFadeOut 0.3s ease-out forwards;
+}
+
+.destovka-input-error {
+    border-color: #dc2626;
+}
+
+.destovka-label-error {
+    color: #dc2626;
+}
+
+
+
+.destovka-input,
+.destovka-select,
+.destovka-unit-button {
+    height: 50px;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.destovka-input,
+.destovka-select {
+    padding: 5px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 120px;
+}
+
+
+
+
+
+
+/* Přidat do style.css */
+
+.destovka-konfig-calc-trigger {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    margin: 8px 0;
+    background-color: transparent;
+    border: none;
+    color: var(--destovka-primary);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.destovka-konfig-calc-trigger:hover {
+    text-decoration: underline;
+}
+
+.destovka-konfig-calc-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.destovka-konfig-calc-modal-show {
+    display: flex;
+}
+
+.destovka-konfig-calc-modal-content {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.destovka-konfig-calc-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--destovka-border-color);
+}
+
+.destovka-konfig-calc-modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--destovka-text-color);
+}
+
+.destovka-konfig-calc-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--destovka-inactive);
+}
+
+.destovka-konfig-calc-modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.destovka-konfig-calc-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 16px;
+    border-top: 1px solid var(--destovka-border-color);
+}
+
+.destovka-konfig-calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.destovka-konfig-calc-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.destovka-konfig-calc-input {
+    display: flex;
+    height: 48px;
+    padding: 8px 16px;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.destovka-konfig-calc-hint {
+    font-size: 14px;
+    color: var(--destovka-inactive);
+}
+
+.destovka-konfig-calc-map {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.destovka-konfig-calc-map-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.destovka-konfig-calc-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.destovka-konfig-calc-button-calculate {
+    background-color: var(--destovka-primary);
+}
+
+.destovka-konfig-calc-button-apply {
+    background-color: var(--destovka-success);
+}
+
+.destovka-konfig-calc-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+

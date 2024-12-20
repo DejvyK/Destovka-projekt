@@ -1,0 +1,422 @@
+[
+    {
+        "Kód": "7985",
+        "Systém": "DN100/110",
+        "Sloupec": "Trubky",
+        "Název": "délka 500 mm"
+    },
+    {
+        "Kód": "7986",
+        "Systém": "DN100/110",
+        "Sloupec": "Trubky",
+        "Název": "délka 1000 mm"
+    },
+    {
+        "Kód": "7987",
+        "Systém": "DN100/110",
+        "Sloupec": "Trubky",
+        "Název": "délka 2000 mm"
+    },
+    {
+        "Kód": "7988",
+        "Systém": "DN100/110",
+        "Sloupec": "Trubky",
+        "Název": "délka 3000 mm"
+    },
+    {
+        "Kód": "8024",
+        "Systém": "DN100/110",
+        "Sloupec": "Trubky",
+        "Název": "délka 5000 mm"
+    },
+    {
+        "Kód": "8012",
+        "Systém": "DN100/110",
+        "Sloupec": "Kolena",
+        "Název": "úhel 15°"
+    },
+    {
+        "Kód": "8013",
+        "Systém": "DN100/110",
+        "Sloupec": "Kolena",
+        "Název": "úhel 30°"
+    },
+    {
+        "Kód": "8014",
+        "Systém": "DN100/110",
+        "Sloupec": "Kolena",
+        "Název": "úhel 45°"
+    },
+    {
+        "Kód": "8015",
+        "Systém": "DN100/110",
+        "Sloupec": "Kolena",
+        "Název": "úhel 67°"
+    },
+    {
+        "Kód": "102810",
+        "Systém": "DN100/110",
+        "Sloupec": "Kolena",
+        "Název": "úhel 87°"
+    },
+    {
+        "Kód": "8041",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "100/100 úhel 45°"
+    },
+    {
+        "Kód": "14539",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "100/100 úhel 87°"
+    },
+    {
+        "Kód": "8042",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "125/100 úhel 45°"
+    },
+    {
+        "Kód": "14540",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "125/100 úhel 87°"
+    },
+    {
+        "Kód": "8046",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "150/100 úhel 45°"
+    },
+    {
+        "Kód": "14542",
+        "Systém": "DN100/110",
+        "Sloupec": "Odbočky",
+        "Název": "150/100 úhel 87°"
+    },
+    {
+        "Kód": "169355",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka"
+    },
+    {
+        "Kód": "12R1148",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka dvojitá"
+    },
+    {
+        "Kód": "154674",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "víčko"
+    },
+    {
+        "Kód": "8008",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "zátka"
+    },
+    {
+        "Kód": "8063",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "čistící tvarovka"
+    },
+    {
+        "Kód": "8033",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "převlečná objímka"
+    },
+    {
+        "Kód": "8004",
+        "Systém": "DN100/110",
+        "Sloupec": "Ostatní",
+        "Název": "redukce 100/125"
+    },
+    {
+        "Kód": "7989",
+        "Systém": "DN125",
+        "Sloupec": "Trubky",
+        "Název": "délka 500 mm"
+    },
+    {
+        "Kód": "7990",
+        "Systém": "DN125",
+        "Sloupec": "Trubky",
+        "Název": "délka 1000 mm"
+    },
+    {
+        "Kód": "7991",
+        "Systém": "DN125",
+        "Sloupec": "Trubky",
+        "Název": "délka 2000 mm"
+    },
+    {
+        "Kód": "7992",
+        "Systém": "DN125",
+        "Sloupec": "Trubky",
+        "Název": "délka 3000 mm"
+    },
+    {
+        "Kód": "7993",
+        "Systém": "DN125",
+        "Sloupec": "Trubky",
+        "Název": "délka 5000 mm"
+    },
+    {
+        "Kód": "8025",
+        "Systém": "DN125",
+        "Sloupec": "Kolena",
+        "Název": "úhel 15°"
+    },
+    {
+        "Kód": "8017",
+        "Systém": "DN125",
+        "Sloupec": "Kolena",
+        "Název": "úhel 30°"
+    },
+    {
+        "Kód": "8018",
+        "Systém": "DN125",
+        "Sloupec": "Kolena",
+        "Název": "úhel 45°"
+    },
+    {
+        "Kód": "8019",
+        "Systém": "DN125",
+        "Sloupec": "Kolena",
+        "Název": "úhel 67°"
+    },
+    {
+        "Kód": "8020",
+        "Systém": "DN125",
+        "Sloupec": "Kolena",
+        "Název": "úhel 87°"
+    },
+    {
+        "Kód": "8042",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "125/100 úhel 45°"
+    },
+    {
+        "Kód": "14540",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "125/100 úhel 87°"
+    },
+    {
+        "Kód": "8043",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "125/125 úhel 45°"
+    },
+    {
+        "Kód": "14541",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "125/125 úhel 87°"
+    },
+    {
+        "Kód": "8045",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "150/125 úhel 45°"
+    },
+    {
+        "Kód": "14543",
+        "Systém": "DN125",
+        "Sloupec": "Odbočky",
+        "Název": "150/125 úhel 87°"
+    },
+    {
+        "Kód": "169356",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka"
+    },
+    {
+        "Kód": "12R1248",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka dvojitá"
+    },
+    {
+        "Kód": "154675",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "víčko"
+    },
+    {
+        "Kód": "8009",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "zátka"
+    },
+    {
+        "Kód": "8064",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "čistící tvarovka"
+    },
+    {
+        "Kód": "8034",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "převlečná objímka"
+    },
+    {
+        "Kód": "8004",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "redukce 100/125"
+    },
+    {
+        "Kód": "8005",
+        "Systém": "DN125",
+        "Sloupec": "Ostatní",
+        "Název": "redukce 125/150"
+    },
+    {
+        "Kód": "7994",
+        "Systém": "DN150/160",
+        "Sloupec": "Trubky",
+        "Název": "délka 500 mm"
+    },
+    {
+        "Kód": "7995",
+        "Systém": "DN150/160",
+        "Sloupec": "Trubky",
+        "Název": "délka 1000 mm"
+    },
+    {
+        "Kód": "7996",
+        "Systém": "DN150/160",
+        "Sloupec": "Trubky",
+        "Název": "délka 2000 mm"
+    },
+    {
+        "Kód": "7997",
+        "Systém": "DN150/160",
+        "Sloupec": "Trubky",
+        "Název": "délka 3000 mm"
+    },
+    {
+        "Kód": "7998",
+        "Systém": "DN150/160",
+        "Sloupec": "Trubky",
+        "Název": "délka 5000 mm"
+    },
+    {
+        "Kód": "8021",
+        "Systém": "DN150/160",
+        "Sloupec": "Kolena",
+        "Název": "úhel 15°"
+    },
+    {
+        "Kód": "8022",
+        "Systém": "DN150/160",
+        "Sloupec": "Kolena",
+        "Název": "úhel 30°"
+    },
+    {
+        "Kód": "8023",
+        "Systém": "DN150/160",
+        "Sloupec": "Kolena",
+        "Název": "úhel 45°"
+    },
+    {
+        "Kód": "8026",
+        "Systém": "DN150/160",
+        "Sloupec": "Kolena",
+        "Název": "úhel 67°"
+    },
+    {
+        "Kód": "8027",
+        "Systém": "DN150/160",
+        "Sloupec": "Kolena",
+        "Název": "úhel 87°"
+    },
+    {
+        "Kód": "8044",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/100 úhel 45°"
+    },
+    {
+        "Kód": "14542",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/100 úhel 87°"
+    },
+    {
+        "Kód": "8045",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/125 úhel 45°"
+    },
+    {
+        "Kód": "14543",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/125 úhel 87°"
+    },
+    {
+        "Kód": "8046",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/150 úhel 45°"
+    },
+    {
+        "Kód": "14545",
+        "Systém": "DN150/160",
+        "Sloupec": "Odbočky",
+        "Název": "150/150 úhel 87°"
+    },
+    {
+        "Kód": "146103",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka"
+    },
+    {
+        "Kód": "12R1648",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "zpětná klapka dvojitá"
+    },
+    {
+        "Kód": "160159",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "víčko"
+    },
+    {
+        "Kód": "8010",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "zátka"
+    },
+    {
+        "Kód": "8065",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "čistící tvarovka"
+    },
+    {
+        "Kód": "8035",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "převlečná objímka"
+    },
+    {
+        "Kód": "8006",
+        "Systém": "DN150/160",
+        "Sloupec": "Ostatní",
+        "Název": "redukce 125/150"
+    }
+]
