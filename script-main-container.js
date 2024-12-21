@@ -14,7 +14,9 @@ class DestovkaKonfigCalculator {
             calcButton.className = 'destovka-konfig-calc-trigger';
             calcButton.textContent = 'Nevím jak velkou nádrž potřebuji';
             calcButton.onclick = () => this.showCalculator();
-            volumeLabel.parentNode.insertBefore(calcButton, volumeLabel.nextSibling);
+
+            const inputRow = document.querySelector('.destovka-input-row');                      
+            inputRow.parentNode.insertBefore(calcButton, inputRow)
         }
 
         this.createCalculatorModal();

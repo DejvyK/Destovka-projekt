@@ -28,7 +28,8 @@ body {
     display: flex;
     flex-direction: row;
     max-width: 100vw;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
   }
 
   .destovka-side-container {
@@ -198,12 +199,18 @@ body {
     font-weight: 500;
 }
 
+.destovka-button-group-container {
+    display: flex;
+    justify-content: center;
+}
+
 .destovka-button-group {
     display: flex;
     gap: 16px; 
     margin-top: 32px; 
     width: 100%;
     justify-content: flex-end;
+    max-width: 1200px;
 }
 
 .destovka-button {
@@ -212,6 +219,8 @@ body {
     border-radius: 6px; 
     font-weight: 500;
     cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .destovka-button-next {
@@ -220,6 +229,11 @@ body {
     border: none;
 }
 
+.destovka-button-next:hover {
+    background-color: #fff;
+    color: var(--destovka-success);
+    outline: 1px solid var(--destovka-success);
+}
 
 .destovka-button-back {
     background-color: white;
@@ -227,12 +241,26 @@ body {
     border: 1px solid var(--destovka-border-color);
 }
 
+.destovka-button-back:hover:not(.destovka-button-disabled) {
+    border: 1px solid var(--destovka-inactive);
+}
+
 .destovka-button-disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
+.destovka-main-container-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+}
+
 .destovka-main-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
 }
 
@@ -247,6 +275,12 @@ body {
 .destovka-input-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 8px;
+}
+
+.destovka-label-wrapper {
+    display: flex;
+    align-items: center;
     gap: 8px;
 }
 
@@ -488,7 +522,6 @@ body {
 .destovka-select {
     padding: 5px;
     width: 100%;
-    max-width: 400px;
     min-width: 120px;
 }
 
