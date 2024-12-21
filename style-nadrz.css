@@ -48,7 +48,6 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    background: var(--destovka-bg-light);
     border-radius: 8px;
     padding: 16px;
 }
@@ -85,7 +84,7 @@
 
 .destovka-tank-item-code {
     font-size: 14px;
-    color: var(--destovka-inactive);
+    color: var(---destovka-secondary-text-color);
 }
 
 .destovka-tank-availability {
@@ -93,19 +92,12 @@
     align-items: center;
     gap: 8px;
     font-size: 14px;
-    font-weight: 500;
-    padding: 4px 0;
+    font-weight: 600;
+    padding: 16px 0;
 }
 
 .destovka-availability-instock {
     color: var(--destovka-success);
-}
-
-.destovka-availability-instock::before {
-    content: "•";
-    font-size: 24px;
-    line-height: 0;
-    padding-right: 4px;
 }
 
 .destovka-availability-outstock {
@@ -119,8 +111,17 @@
 .destovka-tank-actions {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    justify-content: space-between;
+    gap: 18px;
     min-width: 240px;
+    border-left: 1px solid var(--destovka-border-color);
+    padding-left: 24px;
+}
+
+.destovka-tank-action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .destovka-tank-details-btn {
@@ -141,32 +142,20 @@
     color: white;
 }
 
-.destovka-tank-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-top: 1px solid var(--destovka-border-color);
-    border-bottom: 1px solid var(--destovka-border-color);
-}
-
-.destovka-tank-total span:first-child {
-    font-size: 14px;
-    color: var(--destovka-inactive);
-}
-
 .destovka-tank-total-price {
     font-size: 20px;
     font-weight: 600;
-    color: var(--destovka-success);
+    color: var(--destovka-text-color);
+    align-self: flex-end;
 }
 
 .destovka-tank-select {
     display: flex;
     justify-content: center;
     padding: 14px;
-    background: var(--destovka-success);
-    color: white;
+    outline: 1px solid var(--destovka-success);
+    background: #fff;
+    color: var(--destovka-success);
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -175,8 +164,8 @@
 }
 
 .destovka-tank-select:not(:disabled):hover {
-    background: #2eb853;
-    transform: translateY(-1px);
+    background: var(--destovka-success);
+    color: white;
 }
 
 .destovka-tank-select:disabled {
@@ -253,7 +242,7 @@
     margin-bottom: 16px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
     .destovka-tanks-container {
         padding: 0 16px;
     }
@@ -261,7 +250,7 @@
     .destovka-tank-content {
         flex-direction: column;
         padding: 16px;
-        gap: 24px;
+        gap: 12px;
     }
 
     .destovka-tank-visuals {
@@ -274,24 +263,23 @@
         margin: 0 auto;
     }
 
+    .destovka-tank-info {
+        align-items: center;
+    }
+
+    .destovka-tank-item {
+        align-items: center;
+        gap: 0;
+    }
+
     .destovka-tank-actions {
         min-width: auto;
         width: 100%;
+        border-left: none;
+        padding: 0;
+    }
+
+    .destovka-tank-total-price {
+        align-self: center;
     }
 }
-
-
-@media (max-width: 768px) {
-    .destovka-tank-specs td {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-  
-    .destovka-tank-total-price {
-        font-size: 18px;
-    }
-  
-    .destovka-tank-item-name {
-        font-size: 16px;
-    }
-  }

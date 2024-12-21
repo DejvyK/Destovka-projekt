@@ -14,7 +14,9 @@ class DestovkaKonfigCalculator {
             calcButton.className = 'destovka-konfig-calc-trigger';
             calcButton.textContent = 'Nevím jak velkou nádrž potřebuji';
             calcButton.onclick = () => this.showCalculator();
-            volumeLabel.parentNode.insertBefore(calcButton, volumeLabel.nextSibling);
+
+            const inputRow = document.querySelector('.destovka-input-row');                      
+            inputRow.parentNode.insertBefore(calcButton, inputRow)
         }
 
         this.createCalculatorModal();
@@ -538,18 +540,17 @@ class DestovkaTankManager {
                     </div>
                 </div>
                 <div class="destovka-tank-actions">
-                    <button class="destovka-tank-details-btn" data-tank-id="${data['Kód']}">
-                        ${isSelected ? 'Skrýt informace o nádrži' : 'Zobrazit informace o nádrži'}
-                    </button>
-                    <div class="destovka-tank-total">
-                        <span>celkem</span>
-                        <span class="destovka-tank-total-price">${price}</span>
+                    <div class="destovka-tank-total-price">${price}</div>
+                    <div class="destovka-tank-action-buttons">
+                        <button class="destovka-tank-select ${isSelected ? 'destovka-tank-select-selected' : ''}" 
+                                ${availability.isAvailable && !isSelected ? '' : 'disabled'}
+                                data-tank-code="${data['Kód']}">
+                            ${isSelected ? 'Vybráno' : (availability.isAvailable ? 'Vybrat' : 'Nedostupné')}
+                        </button>
+                        <button class="destovka-tank-details-btn" data-tank-id="${data['Kód']}">
+                            ${isSelected ? 'Skrýt informace o nádrži' : 'Zobrazit informace o nádrži'}
+                        </button>
                     </div>
-                    <button class="destovka-tank-select ${isSelected ? 'destovka-tank-select-selected' : ''}" 
-                            ${availability.isAvailable && !isSelected ? '' : 'disabled'}
-                            data-tank-code="${data['Kód']}">
-                        ${isSelected ? 'Vybráno' : (availability.isAvailable ? 'Vybrat' : 'Nedostupné')}
-                    </button>
                 </div>
             </div>
             <div class="destovka-tank-details" id="details-${data['Kód']}">
