@@ -540,23 +540,6 @@ body {
 
 
 /* Přidat do style.css */
-
-.destovka-konfig-calc-trigger {
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    margin: 8px 0;
-    background-color: transparent;
-    border: none;
-    color: var(--destovka-primary);
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.destovka-konfig-calc-trigger:hover {
-    text-decoration: underline;
-}
-
 .destovka-konfig-calc-modal {
     display: none;
     position: fixed;
