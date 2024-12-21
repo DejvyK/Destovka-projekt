@@ -56,8 +56,9 @@
         display: none;
     }
 
-    .destovka-main-text {
+    .destovka-main-text > h1 {
         font-size: 24px;
+        margin-bottom: 16px;
     }
 
     .destovka-main-text > img {

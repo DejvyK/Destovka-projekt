@@ -5,6 +5,7 @@
     --destovka-bg-light: #f8fafc;
     --destovka-border-color: #e2e8f0;
     --destovka-text-color: rgb(44, 42, 77);
+    --destovka-secondary-text-color: #0f0e41;
     --destovka-spacing-sm: 8px;
     --destovka-spacing-md: 16px;
     --destovka-spacing-lg: 32px;
@@ -171,6 +172,7 @@ body {
   .destovka-main-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 50px;
     flex: 1;
     gap: 20px;  
@@ -202,6 +204,7 @@ body {
 .destovka-button-group-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .destovka-button-group {
@@ -251,6 +254,7 @@ body {
 }
 
 .destovka-main-container-content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -262,6 +266,11 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+}
+
+.destovka-main-text > img {
+    height: 300px;
+    width: auto;
 }
 
 .destovka-main-text h1 {
