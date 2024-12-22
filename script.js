@@ -4,6 +4,11 @@ class DestovkaStepManager {
     constructor() {
         this.currentStep = 1;
         this.maxSteps = 11;
+
+        if (window.destovkaCart) {
+            window.destovkaCart.destClear();
+        }
+
         this.initializeButtons();
         this.updateButtonsState();
         this.initializeValidation();
@@ -106,6 +111,7 @@ class DestovkaStepManager {
     }
 
     saveFormData() {
+        // Předchozí implementace
         if (this.currentStep === 1) {
             this.formData.set('volume', document.getElementById('volumeRange')?.value);
             this.formData.set('concrete', document.getElementById('concrete')?.value);
@@ -115,6 +121,9 @@ class DestovkaStepManager {
             this.formData.set('inflowDiameter', document.getElementById('inflowDiameter')?.value);
             this.formData.set('outflowDiameter', document.getElementById('outflowDiameter')?.value);
             this.formData.set('inflowDepth', document.getElementById('inflowDepth')?.value);
+    
+            // Přidáme console.log pro debugging
+            console.log('Form data saved:', Object.fromEntries(this.formData.entries()));
         }
     }
 
@@ -137,28 +146,73 @@ class DestovkaStepManager {
 
     handlePreviousStep() {
         if (this.currentStep > 1) {
-            if (this.currentStep === 2) {
-                // Použijeme nativní confirm dialog
-                const confirmed = confirm("Pozor, návratem na první stránku konfigurátoru začnete znovu, opravdu chcete pokračovat?");
-                if (confirmed) {
-                    this.formData.clear();  // Vymazat uložená data
-                    this.changeStep(1);
-                }
-                return;
+            if (this.currentStep === 2 || this.currentStep === 3 || this.currentStep === 4) {
+                const confirmed = confirm("Pozor, návratem na předchozí krok začnete znovu, opravdu chcete pokračovat?");
+                if (!confirmed) return;
+                
+                // Odstranit produkty z košíku pro tento krok
+                const stepItems = window.destovkaCart.destGetItemsByStep(this.currentStep);
+                stepItems.forEach(item => {
+                    window.destovkaCart.destRemoveItem(item.productCode);
+                });
             }
             this.changeStep(this.currentStep - 1);
         }
-    }
+     }
 
-    handleNextStep() {
+     async handleNextStep() {
         if (this.currentStep === 2) {
             const selectedTank = window.destovkaCart?.destGetItemsByStep(2)[0];
             if (!selectedTank) {
                 alert('Prosím vyberte nádrž před pokračováním.');
                 return;
             }
+     
+            const tankData = window.destovkaTankManager?.tanksData.find(
+                tank => tank['Kód'] === selectedTank.productCode
+            );
+     
+            if (tankData) {
+                try {
+                    if (!window.destovkaAccessoryFilter) {
+                        window.destovkaAccessoryFilter = new DestovkaAccessoryFilter();
+                    }
+                    if (!window.destovkaAccessoryManager) {
+                        window.destovkaAccessoryManager = new DestovkaAccessoryManager(window.destovkaAccessoryFilter);
+                    }
+                    
+                    await new Promise((resolve) => {
+                        window.destovkaAccessoryManager.showAccessoryPopup(tankData, resolve);
+                    });
+                    
+                    return;
+                } catch (error) {
+                    console.error('Chyba při zobrazení accessory popup:', error);
+                    this.changeStep(this.currentStep + 1);
+                }
+            }
+        } 
+        else if (this.currentStep === 3 || this.currentStep === 4 || this.currentStep === 5) {
+            const container = document.getElementById(`destovka-step${this.currentStep}`);
+            const productsContainer = container.querySelector('.destovka-products-container');
+            
+            if (!productsContainer) {
+                console.error('Products container not found');
+                return;
+            }
+        
+            const selectedCard = productsContainer.querySelector('.destovka-product-selected');
+            if (!selectedCard) {
+                alert('Prosím vyberte produkt před pokračováním.');
+                return;
+            }
+        
+            const productCode = selectedCard.dataset.productCode;
+            if (productCode) {
+                window.destovkaCart.destAddItem(this.currentStep, productCode, 1);
+            }
         }
-    
+     
         if (this.currentStep < this.maxSteps && this.validateStep(this.currentStep)) {
             this.saveFormData();
             this.changeStep(this.currentStep + 1);
@@ -179,6 +233,18 @@ class DestovkaStepManager {
         }
     
         this.currentStep = newStep;
+        
+        if (newStep === 5 && !window.destovkaSiphonManager) {
+            window.destovkaSiphonManager = new DestovkaSiphonManager();
+        }
+
+        if (newStep === 4 && !window.destovkaFiltrationManager) {
+            window.destovkaFiltrationManager = new DestovkaFiltrationManager();
+        }
+
+        if (newStep === 3 && !window.destovkaAccessoriesManager) {
+            window.destovkaAccessoriesManager = new DestovkaAccessoriesManager();
+        }
         
         // Přidáme tuto podmínku
         if (newStep === 2 && window.destovkaTankManager) {
@@ -476,13 +542,293 @@ class DestovkaCart {
     }
 }
 
+class DestovkaAccessoryManager {
+    constructor(filter) {
+        if (!filter) {
+            throw new Error('AccessoryFilter není inicializován');
+        }
+        this.filter = filter;
+        this.selectedTankSystem = null;
+        this.coverIncluded = false;
+        this.coverType = null;
+        this.getFeedData = () => window.destovkaTankManager?.feedData || new Map();
+    }
+
+    getFeedDataForProduct(code) {
+        const feedData = this.getFeedData();
+        return feedData.get(code) || {
+            price: 'Cena na dotaz',
+            availability: 'out of stock',
+            imageLink: '/api/placeholder/200/200',
+            link: '#'
+        };
+    }
+
+    getCompatibleCovers(tankData) {
+        const compatibleCovers = this.filter.getCompatibleCovers(
+            tankData['Systém'], 
+            tankData['Poklop v ceně (žádný/nepochozí/pochozí/do 1,5 t/do 3,5 t/do 12,5 t/do 40 t']
+        );
+
+        return compatibleCovers.map(cover => {
+            const feedData = this.getFeedDataForProduct(cover.Kód);
+            return {
+                ...cover,
+                price: feedData.price,
+                availability: feedData.availability
+            };
+        });
+    }
+
+    formatAvailability(availability) {
+        switch (availability) {
+            case 'in stock':
+                return {
+                    text: 'Skladem',
+                    className: 'destovka-availability-instock',
+                    isAvailable: true
+                };
+            case 'out of stock':
+                return {
+                    text: 'Není skladem',
+                    className: 'destovka-availability-outstock',
+                    isAvailable: false
+                };
+            default:
+                return {
+                    text: 'Na dotaz',
+                    className: 'destovka-availability-request',
+                    isAvailable: false
+                };
+        }
+    }
+
+    formatPrice(price) {
+        if (!price) return 'Cena na dotaz';
+        const [value, currency] = price.split(' ');
+        return `${parseInt(value).toLocaleString('cs-CZ')} Kč`;
+    }
+
+    createAccessoryItem(item) {
+        const availability = this.formatAvailability(item.availability);
+        const feedData = this.getFeedDataForProduct(item.Kód);
+        
+        return `
+            <div class="destovka-accessory-item">
+                <div class="destovka-accessory-item-main">
+                    <div class="destovka-accessory-item-visuals">
+                        <div class="destovka-accessory-item-image">
+                            <img src="${feedData.imageLink}" 
+                                 alt="${item.Název}"
+                                 onerror="this.src='/api/placeholder/200/200'" />
+                        </div>
+                    </div>
+                    <div class="destovka-accessory-item-info">
+                        <div class="destovka-accessory-item-name">${item.Název}</div>
+                        <div class="destovka-accessory-item-code">kód ${item.Kód}</div>
+                        <div class="destovka-accessory-item-load">Zatížení: ${item.Zatížení}</div>
+                        <div class="destovka-tank-availability ${availability.className}">
+                            ${availability.text}
+                        </div>
+                        <div class="destovka-tank-total-price">${this.formatPrice(item.price)}</div>
+                    </div>
+                    <div class="destovka-accessory-item-actions">
+                        <button class="destovka-accessory-select" data-code="${item.Kód}" 
+                            ${!availability.isAvailable ? 'disabled' : ''}>
+                            ${availability.isAvailable ? 'Vybrat' : 'Nedostupné'}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    showAccessoryPopup(tankData, callback) {
+        if (!tankData) {
+            console.error('Nejsou k dispozici data nádrže');
+            return;
+        }
+     
+        this.callback = callback;
+        this.selectedTankSystem = tankData['Systém'];
+        const compatibleCovers = this.getCompatibleCovers(tankData);
+     
+        let popup = document.querySelector('.destovka-accessory-popup');
+        if (!popup) {
+            popup = document.createElement('div');
+            popup.className = 'destovka-accessory-popup';
+            popup.innerHTML = `
+                <div class="destovka-accessory-popup-content">
+                    <div class="destovka-accessory-popup-header">
+                        <h2>Výběr poklopu</h2>
+                        <button class="destovka-accessory-popup-close">&times;</button>
+                    </div>
+                    <div class="destovka-accessory-popup-body">
+                        ${this.coverIncluded ? 
+                            `<div class="destovka-accessory-included-info">
+                                Nádrž již obsahuje ${this.coverType} poklop
+                            </div>` : ''
+                        }
+                        <div class="destovka-accessory-section">
+                            <h3>Poklopy</h3>
+                            <div class="destovka-accessory-items">
+                                ${compatibleCovers.map(cover => 
+                                    this.createAccessoryItem(cover, 'cover')
+                                ).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="destovka-accessory-popup-footer">
+                        <button class="destovka-accessory-popup-confirm">Pokračovat</button>
+                        ${this.coverIncluded ? 
+                            `<button class="destovka-accessory-popup-skip">Přeskočit</button>` : ''
+                        }
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+     
+        popup.classList.add('destovka-accessory-popup-show');
+        this.initializeEventListeners(popup);
+    }
+
+    initializeEventListeners(popup) {
+        popup.querySelector('.destovka-accessory-popup-close').addEventListener('click', () => {
+            this.closePopup(popup);
+        });
+    
+        popup.querySelector('.destovka-accessory-popup-confirm').addEventListener('click', () => {
+            this.handleConfirm(popup);
+        });
+    
+        if (this.coverIncluded) {
+            popup.querySelector('.destovka-accessory-popup-skip')?.addEventListener('click', () => {
+                this.handleSkip(popup);
+            });
+        }
+    
+        popup.querySelectorAll('.destovka-accessory-select').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const code = e.target.dataset.code;
+                this.handleCoverSelection(button, code);
+            });
+        });
+    }
+
+    handleCoverSelection(button, code) {
+        document.querySelectorAll('.destovka-accessory-select').forEach(btn => {
+            btn.classList.remove('destovka-accessory-select-selected');
+            btn.textContent = 'Vybrat';
+        });
+
+        button.classList.add('destovka-accessory-select-selected');
+        button.textContent = 'Vybráno';
+    }
+
+    handleConfirm(popup) {
+        const selectedCoverButton = popup.querySelector('.destovka-accessory-select-selected');
+        if (selectedCoverButton) {
+            const coverCode = selectedCoverButton.dataset.code;
+            window.destovkaCart.destAddItem(3, coverCode, 1);
+        }
+     
+        this.closePopup(popup);
+        window.destovkaStepManager.changeStep(3);
+        if (this.callback) this.callback();
+     }
+     
+     handleSkip(popup) {
+        this.closePopup(popup);
+        window.destovkaStepManager.changeStep(3);
+        if (this.callback) this.callback();
+     }
+
+    closePopup(popup) {
+        popup.classList.remove('destovka-accessory-popup-show');
+        setTimeout(() => popup.remove(), 300);
+    }
+}
+
+class DestovkaAccessoryFilter {
+    constructor() {
+        this.coverData = [];
+        this.loadData();
+    }
+ 
+    async loadData() {
+        try {
+            const response = await fetch('jsony/poklopy.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.coverData = await response.json();
+        } catch (error) {
+            console.error('Chyba při načítání dat:', error);
+        }
+    }
+ 
+    getCompatibleCovers(tankSystem, currentCover) {
+        console.log('Filtering covers for system:', tankSystem);
+        console.log('Current cover:', currentCover);
+        console.log('Available covers:', this.coverData);
+ 
+        if (!this.coverData || this.coverData.length === 0) {
+            console.warn('No cover data available');
+            return [];
+        }
+ 
+        const filtered = this.coverData.filter(cover => {
+            // Kontrola, zda cover má všechny potřebné vlastnosti
+            if (!cover || !cover.Systém || !cover.Zatížení) {
+                console.warn('Invalid cover data:', cover);
+                return false;
+            }
+ 
+            console.log('Checking cover:', cover);
+            
+            // Základní kompatibilita systému
+            if (cover.Systém !== tankSystem) {
+                console.log(`System mismatch: ${cover.Systém} !== ${tankSystem}`);
+                return false;
+            }
+ 
+            // Pokud má nádrž už poklop, nabízíme jen lepší
+            if (currentCover && currentCover !== 'žádný') {
+                const currentLoadIndex = this.getLoadIndex(currentCover);
+                const coverLoadIndex = this.getLoadIndex(cover.Zatížení);
+                const isUpgrade = coverLoadIndex > currentLoadIndex;
+                console.log(`Load comparison: current=${currentLoadIndex}, cover=${coverLoadIndex}, isUpgrade=${isUpgrade}`);
+                return isUpgrade;
+            }
+ 
+            return true;
+        });
+ 
+        console.log('Filtered covers:', filtered);
+        return filtered;
+    }
+ 
+    getLoadIndex(loadType) {
+        const loadHierarchy = [
+            'nepochozí',
+            'pochozí',
+            'pojezdná do 3,5 t',
+            'pojezdná do 12 t'
+        ];
+        const index = loadHierarchy.indexOf(loadType);
+        console.log(`Load index for ${loadType}: ${index}`);
+        return index;
+    }
+ }
+
 
 const initializeConfigurator = () => {
     window.unitConverter = new UnitConverter();
     window.volumeRange = new VolumeRangeHandler();
-    window.destovkaStepManager = new DestovkaStepManager();
     window.tooltipHandler = new TooltipHandler();
     window.destovkaCart = new DestovkaCart();
+    window.destovkaStepManager = new DestovkaStepManager();
 };
 
 if (document.readyState === 'loading') {

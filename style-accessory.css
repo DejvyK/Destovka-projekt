@@ -1,0 +1,241 @@
+/* Popup kontejner */
+.destovka-accessory-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.destovka-accessory-popup-show {
+    display: flex;
+    opacity: 1;
+}
+
+.destovka-accessory-popup-content {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Hlavička popupu */
+.destovka-accessory-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--destovka-border-color);
+}
+
+.destovka-accessory-popup-header h2 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 600;
+    color: var(--destovka-text-color);
+}
+
+.destovka-accessory-popup-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--destovka-inactive);
+}
+
+/* Tělo popupu */
+.destovka-accessory-popup-body {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 32px;
+    overflow-y: auto;
+}
+
+.destovka-accessory-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.destovka-accessory-section h3 {
+    font-size: 24px;
+    color: var(--destovka-text-color);
+    margin: 0;
+    font-weight: 600;
+}
+
+.destovka-accessory-included-info {
+    display: flex;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--destovka-border-color);
+    border-radius: 8px;
+    color: var(--destovka-text-color);
+    font-weight: 500;
+}
+
+/* Položky příslušenství - kopírujeme styl z tank boxů */
+.destovka-accessory-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.destovka-accessory-item {
+    display: flex;
+    border: 1px solid var(--destovka-border-color);
+    background: white;
+    border-radius: 8px;
+    transition: box-shadow 0.2s ease;
+}
+
+.destovka-accessory-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.destovka-accessory-item-main {
+    display: flex;
+    padding: 24px;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.destovka-accessory-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.destovka-accessory-item-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--destovka-text-color);
+}
+
+.destovka-accessory-item-code {
+    font-size: 14px;
+    color: var(--destovka-secondary-text-color);
+}
+
+.destovka-accessory-item-load,
+.destovka-accessory-item-height {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 16px 0;
+    color: var(--destovka-text-color);
+}
+
+/* Ovládací prvky - kopírujeme styl z existujících buttonů */
+.destovka-accessory-item-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 240px;
+    border-left: 1px solid var(--destovka-border-color);
+    padding-left: 24px;
+}
+
+.destovka-accessory-select {
+    display: flex;
+    justify-content: center;
+    padding: 14px;
+    outline: 1px solid var(--destovka-success);
+    background: #fff;
+    color: var(--destovka-success);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.destovka-accessory-select:not(:disabled):hover {
+    background: var(--destovka-success);
+    color: white;
+}
+
+/* Patička popupu */
+.destovka-accessory-popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    padding: 24px;
+    border-top: 1px solid var(--destovka-border-color);
+}
+
+/* Kopírujeme styl z destovka-button */
+.destovka-accessory-popup-confirm,
+.destovka-accessory-popup-skip {
+    display: flex;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.destovka-accessory-popup-confirm {
+    background-color: var(--destovka-success);
+    color: white;
+    border: none;
+}
+
+.destovka-accessory-popup-confirm:hover {
+    background-color: #fff;
+    color: var(--destovka-success);
+    outline: 1px solid var(--destovka-success);
+}
+
+.destovka-accessory-popup-skip {
+    background-color: white;
+    color: var(--destovka-inactive);
+    border: 1px solid var(--destovka-border-color);
+}
+
+.destovka-accessory-popup-skip:hover {
+    border: 1px solid var(--destovka-inactive);
+}
+
+
+.destovka-accessory-item-visuals {
+    width: 120px;
+    min-width: 120px;
+    margin-right: 20px;
+}
+
+.destovka-accessory-item-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.destovka-accessory-item-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+

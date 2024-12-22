@@ -14,12 +14,18 @@
     }
 
     .destovka-site-logo {
-      display: none;
+        flex: 1;
+        width: 50%;
+        justify-content: flex-end;
+    }
+
+    .destovka-site-logo > img {
+        max-width: 200px;
     }
 
     .destovka-side-container {
       width: 100%;
-      flex-direction: row;
+      flex-direction: row-reverse;
       background-color: #fff;
     }
 
@@ -30,11 +36,13 @@
     .destovka-sidebar {
         width: 100%;
         padding: 0;
+        align-self: stretch;
     }
 
     .destovka-steps {
         flex-direction: row;
         overflow: auto;
+        height: 100%;
     }
 
     .destovka-step {
@@ -45,6 +53,7 @@
 
     .destovka-step-completed {
         border-bottom: 1px solid var(--destovka-success);
+        display: none;
     }
   
     .destovka-step-title {
